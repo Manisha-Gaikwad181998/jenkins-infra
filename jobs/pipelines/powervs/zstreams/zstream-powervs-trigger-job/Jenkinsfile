@@ -151,34 +151,34 @@ void triggerBuild(release, latestBuild, currentStableBuild, nextStableBuild, nex
     
     //Direct deployment Job Trigger
     echo "Latest Build: $latestBuild"
-#    build job: 'zstream-ocp4x-powervs-toronto01-p9-direct-deploy', wait: false,parameters: [
-#        string(name: 'Release', value: "${release}"),
-#        string(name: 'Build', value: "${latestBuild}"),
-#        string(name: 'KeepFor', value: "${keepfor}")
-#    ]
+   //  build job: 'zstream-ocp4x-powervs-toronto01-p9-direct-deploy', wait: false,parameters: [
+   //     string(name: 'Release', value: "${release}"),
+   //     string(name: 'Build', value: "${latestBuild}"),
+   //     string(name: 'KeepFor', value: "${keepfor}")
+   // ]
     
     // Upgrade Job Trigger for same OCP release from last stable to latest build
     if (latestBuild != currentStableBuild ){
      echo "Current Release Stable Build: $currentStableBuild"
-#     sleep 840
-#     build job: 'zstream-ocp4x-powervs-toronto01-p9-current-upgrade', wait: false,parameters: [
-#         string(name: 'Release', value: "${release}"),
-#         string(name: 'CurrentBuild', value: "${currentStableBuild}"),
-#         string(name: 'UpgradeBuild', value: "${latestBuild}"),
-#         string(name: 'KeepFor', value: "${keepfor}")
-#     ]
+   //   sleep 840
+   //   build job: 'zstream-ocp4x-powervs-toronto01-p9-current-upgrade', wait: false,parameters: [
+   //       string(name: 'Release', value: "${release}"),
+   //       string(name: 'CurrentBuild', value: "${currentStableBuild}"),
+   //       string(name: 'UpgradeBuild', value: "${latestBuild}"),
+   //       string(name: 'KeepFor', value: "${keepfor}")
+   //  ]
     }
     
     //Upgrade Job Trigger for current release ocp build to next release's stable ocp build
     if (nextStableBuild != "default"){
         echo "Next Release Stable Build: ${nextStableBuild}"
-#        sleep 840
-#        build job: 'zstream-ocp4x-powervs-toronto01-p9-next-upgrade', wait: false,parameters: [
-#            string(name: 'Release', value: "${release}"),
-#            string(name: 'UpgradeRelease', value: "${next_release}"),
-#            string(name: 'CurrentBuild', value: "${latestBuild}"),
-#            string(name: 'UpgradeBuild', value: "${nextStableBuild}"),
-#            string(name: 'KeepFor', value: "${keepfor}")
-#        ]
+       //  sleep 840
+       //  build job: 'zstream-ocp4x-powervs-toronto01-p9-next-upgrade', wait: false,parameters: [
+       //      string(name: 'Release', value: "${release}"),
+       //      string(name: 'UpgradeRelease', value: "${next_release}"),
+       //      string(name: 'CurrentBuild', value: "${latestBuild}"),
+       //      string(name: 'UpgradeBuild', value: "${nextStableBuild}"),
+       //      string(name: 'KeepFor', value: "${keepfor}")
+       //  ]
     }
 }
