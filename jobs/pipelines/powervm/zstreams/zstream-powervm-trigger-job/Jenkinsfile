@@ -18,7 +18,7 @@ pipeline {
                 }
             }
         }
-        stage("Identify newer Zstrems and Trigger Jenkins Jobs") {
+        stage("Identify newer Zstreams and Trigger Jenkins Jobs") {
             steps {
                 script {
                     def version_exists = "true"
